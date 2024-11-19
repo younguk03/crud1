@@ -1,4 +1,5 @@
 'use client'
+import { updateTopic } from '@/action/topicActions';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
@@ -20,16 +21,7 @@ export default function EditTopicForm({
       e.preventDefault()
 
       try {
-         const res = await fetch(`/api/topics/${id}`, {
-            method: 'PUT',
-            headers: {
-               'Content-type': 'application/json',
-            },
-            body: JSON.stringify({ newTitle, newDescription }),
-         })
-         if (!res.ok) {
-            throw new Error('Failed to update topic')
-         }
+         await updateTopic(id, newTitle, newDescription)
          router.push('/');
          router.refresh();
       } catch (error) {
