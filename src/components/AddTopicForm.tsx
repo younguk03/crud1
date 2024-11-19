@@ -11,7 +11,6 @@ export default function AddTopicForm() {
 
    const handleSubmit = async (e: React.FormEvent) => {
       e.preventDefault()
-
       try {
          await createTopic(title, description)
          router.push('/')
