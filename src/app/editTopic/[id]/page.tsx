@@ -1,6 +1,8 @@
+import { auth } from '@/auth'
 import EditTopicForm from '@/components/EditTopicForm'
+import { redirect } from 'next/navigation'
 import React from 'react'
-
+//use client가 없으니까 auth를 쓰면 됨
 
 const apiUrl = process.env.API_URL
 
@@ -22,6 +24,11 @@ export default async function EditTopicPage({ params,
 }: {
    params: { id: string }
 }) {
+
+   const session = await auth()
+   if (!session) {
+      redirect('/login')
+   }
    const { id } = await params;
    const { topic } = await getTopciById(id);
    const { title, description } = topic;
