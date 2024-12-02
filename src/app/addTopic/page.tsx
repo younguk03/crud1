@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 'use client'
 import { useSession } from 'next-auth/react'
 import { redirect, useRouter } from 'next/navigation'
@@ -42,30 +43,15 @@ export default function AddTopic() {
          console.log(error)
       }
    }
+=======
+import AddTopicForm from '@/components/AddTopicForm'
+>>>>>>> a7e50e1e7df88c03e02e57bfe6331ba951dd003c
 
+export default function AddTopicPage() {
    return (
-      <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-         <input
-            onChange={(e) => setTitle(e.target.value)}
-            value={title}
-            type="text"
-            placeholder="Topic title"
-            className="border border-slate-500 p-4"
-         />
-
-         <textarea
-            onChange={(e) => setDescription(e.target.value)}
-            value={description}
-            placeholder="Topic description"
-            className="border border-slate-500 p-4 h-40"
-         />
-
-         <button
-            type="submit"
-            className="bg-green-800 rounded-lg text-white font-bold py-3 px-6 w-fit"
-         >
-            Add Topic
-         </button>
-      </form>
+      <div className="max-w-3xl mx-auto mt-8">
+         <h1 className="text-2xl font-bold mb-4">새 토픽 추가</h1>
+         <AddTopicForm />
+      </div>
    )
 }
